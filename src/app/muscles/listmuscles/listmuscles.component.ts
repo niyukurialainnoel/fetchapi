@@ -8,9 +8,21 @@ import { ApidataService } from '../../services/apidata.service';
 })
 export class ListmusclesComponent {
 
-  exercises=[];
+  
 
   constructor(private muscleslist:ApidataService) { }
+  // const exercisesPromise = new Promise((resolve, reject) => {
+  //   this.muscleslist.getExercises('biceps').subscribe(
+  //     (data) => {
+  //       resolve(data);
+  //     },
+  //     (error) => {
+  //       reject(error);
+  //     }
+  //   );
+  // });
+
+  exercises=[];
 
   ngOnInit() {
     
@@ -18,6 +30,9 @@ export class ListmusclesComponent {
       .subscribe((data) => {
         this.exercises = data;
         console.log(this.exercises)
+        for (let i=0;this.exercises.length;i++){
+          console.log(this.exercises[0])
+        }
       });
   }
 }

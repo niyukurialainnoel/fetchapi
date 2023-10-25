@@ -9,13 +9,16 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ApidataService {
-  private apiUrl = `https://api.api-ninjas.com/v1/exercises`;//https://api.api-ninjas.com/v1/exercises?muscle=
+  private apiUrl = `https://api.api-ninjas.com/v1/exercises`;
 
   constructor(private http: HttpClient) { }
 
   getExercises(muscle:string): Observable<any> {
-    const headers = new HttpHeaders();
-    headers.set('X-Api-Key','jH7mMWuRDX1jYj27j5NIEw==whrIJA00m0I4yVxJ')
+    //const headers = new HttpHeaders();
+    const headers ={
+      'Content-Type':'application/json',
+      'X-Api-Key':'jH7mMWuRDX1jYj27j5NIEw==whrIJA00m0I4yVxJ'
+    };
     const url = `${this.apiUrl}?muscle=${muscle}`;
     return this.http.get<any>(url,{headers:headers})
       .pipe(
