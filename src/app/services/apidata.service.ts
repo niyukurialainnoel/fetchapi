@@ -15,12 +15,9 @@ export class ApidataService {
 
   getExercises(muscle:string): Observable<any> {
     //const headers = new HttpHeaders();
-    const headers ={
-      'Content-Type':'application/json',
-      'X-Api-Key':'jH7mMWuRDX1jYj27j5NIEw==whrIJA00m0I4yVxJ'
-    };
+    
     const url = `${this.apiUrl}?muscle=${muscle}`;
-    return this.http.get<any>(url,{headers:headers})
+    return this.http.get<any>(url)
       .pipe(
         catchError((error) => {
           console.error('Une erreur s\'est produite lors de la requête HTTP :', error);
